@@ -56,7 +56,7 @@ public class User {
 		} else if (option.equals("T")) {
 			timeline();
 		} else if (option.equals("S")) {
-			RedeSocial.main(null);
+			SocialNetwork.menu();
 		}
 	}
 

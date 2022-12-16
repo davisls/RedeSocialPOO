@@ -7,12 +7,16 @@ import exceptions.UserNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class RedeSocial {
+public class SocialNetwork {
 	private static ArrayList<User> users = new ArrayList<>();
 
 	private static Scanner sc = new Scanner(System.in);
 	
 	public static void main(String[] args) {
+		SocialNetwork.menu();
+	}
+
+	public static void menu() {
 		System.out.println("\n========================================");
 		System.out.println("|             Menu Inicial:            |");
 		System.out.println("|                                      |");
@@ -23,28 +27,28 @@ public class RedeSocial {
 		System.out.println("========================================\n");
 
 		String option = sc.next();
-		
-		if (option.equals("C")) {
+
+		if (option.equalsIgnoreCase("C")) {
 			register();
-		} else if (option.equals("L")) {
+		} else if (option.equalsIgnoreCase("L")) {
 			try {
 				login();
 			} catch (UserNotFoundException | InvalidPasswordException e) {
 				System.out.println(e.getMessage());
-				main(null);
+				menu();
 			}
-		} else if (option.equals("F")) {
+		} else if (option.equalsIgnoreCase("F")) {
 			System.out.println("\nPrograma encerrando...");
 		} else {
 			System.out.println("\nComando não identificado!");
-			main(null);
+			menu();
 		}
 
 		sc.close();
 		System.out.println("Programa encerrado!");
 		System.exit(0);
 	}
-	
+
 	public static void register() {
 		sc.nextLine();
 
@@ -62,25 +66,25 @@ public class RedeSocial {
 		
 		if (!password.equals(confirmPassword)) {
 			System.out.println("\nO campo senha e confirmar senha devem ser iguais!");
-			main(null);
+			menu();
 		}
 
 		for (User user : users) {
 			if (user.getLogin().equalsIgnoreCase(login)) {
 				System.out.println("\nJá existe um usuário cadastrado com este login!");
-				main(null);
+				menu();
 			}
 		}
 		
 		if (name.length() == 0) {
 			System.out.println("\nO campo 'Nome' não pode ser vazio!");
-			main(null);
+			menu();
 		} else if (login.length() == 0) {
 			System.out.println("\nO campo 'Login' não pode ser vazio!");
-			main(null);
+			menu();
 		} else if (password.length() == 0) {
 			System.out.println("\nO campo 'Senha' não pode ser vazio!");
-			main(null);
+			menu();
 		}
 		
 		try {
@@ -88,10 +92,10 @@ public class RedeSocial {
 			users.add(user);
 		} catch (InvalidFormatPasswordException e) {
 			System.out.println(e.getMessage());
-			main(null);
+			menu();
 		}
 
-		main(null);
+		menu();
 	}
 	
 	public static void login() throws UserNotFoundException, InvalidPasswordException {
