@@ -12,7 +12,6 @@ public class User {
 	private final String login;
 	private String password;
 	private ArrayList<Post> posts = new ArrayList<>();
-	private SocialNetwork socialNetwork;
 
 	private Scanner sc = new Scanner(System.in);
 
@@ -21,7 +20,7 @@ public class User {
 		this.name = name;
 		this.login = login;
 		this.password = password;
-		this.socialNetwork = socialNetwork;
+		// this.socialNetwork = socialNetwork;
 	}
 
 	public String getName() {
@@ -37,7 +36,7 @@ public class User {
 		this.password = password;
 	}
 
-	public void menu() {
+	public void menu(SocialNetwork socialNetwork) {
 		System.out.println("\n========================================");
 		System.out.println("Bem vindo " + this.getName() + "!");
 		System.out.println("========================================");
@@ -48,13 +47,16 @@ public class User {
 		System.out.println("|                                      |");
 		System.out.println("========================================\n");
 		String option = sc.nextLine();
-		
+
 		if (option.equals("P")) {
-			post();
+			post(socialNetwork);
 		} else if (option.equals("T")) {
-			timeline();
+			timeline(socialNetwork);
 		} else if (option.equals("S")) {
-			socialNetwork.menu();
+			logout(socialNetwork);
+		} else {
+			System.out.println("Comando não identificado! Tente novamente");
+			menu(socialNetwork);
 		}
 	}
 
@@ -72,7 +74,7 @@ public class User {
 		return password.equals(this.password);
 	}
 	
-	public void post() {
+	public void post(SocialNetwork socialNetwork) {
 		System.out.println("\nDigite o texto do seu post: ");
 		String text = sc.nextLine();
 
@@ -81,16 +83,21 @@ public class User {
 			this.posts.add(post);
 		} catch (Exception e) {
 			System.out.println("\nOops... algo deu errado :( Tente novamente mais tarde!");
-			menu();
+			menu(socialNetwork);
 		}
 
-		menu();
+		menu(socialNetwork);
 	}
 	
-	public void timeline() {
+	public void timeline(SocialNetwork socialNetwork) {
 		for(Post post : posts) {
 			System.out.printf("\n%s às %s - %s\n", post.getDate(), post.getHours(), post.getText());
 		}
-		menu();
+		menu(socialNetwork);
 	}
+
+	public void logout(SocialNetwork socialNetwork) {
+		socialNetwork.menu();
+	}
+
 }

@@ -106,7 +106,7 @@ public class SocialNetwork {
 		for (User user : users) {
 			if (user.getLogin().equals(login)) {
 				if (user.checkIfPasswordIsCorrect(password)) {
-					user.menu();
+					user.menu(this);
 				} else {
 					throw new InvalidPasswordException("\nSenha incorreta");
 				}
