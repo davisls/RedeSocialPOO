@@ -47,11 +47,11 @@ public class User {
 		System.out.println("========================================\n");
 		String option = sc.nextLine();
 
-		if (option.equals("P")) {
+		if (option.equalsIgnoreCase("P")) {
 			post(socialNetwork);
-		} else if (option.equals("T")) {
+		} else if (option.equalsIgnoreCase("T")) {
 			timeline(socialNetwork);
-		} else if (option.equals("S")) {
+		} else if (option.equalsIgnoreCase("S")) {
 			logout(socialNetwork);
 		} else {
 			System.out.println("Comando não identificado! Tente novamente");
