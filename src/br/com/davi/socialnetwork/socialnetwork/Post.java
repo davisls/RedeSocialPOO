@@ -1,4 +1,4 @@
-package br.com.davi.socialnetwork.redesocial;
+package br.com.davi.socialnetwork.socialnetwork;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package br.com.davi.socialnetwork.redesocial;
+package br.com.davi.socialnetwork.socialnetwork;
 
 import br.com.davi.socialnetwork.exceptions.InvalidFormatPasswordException;
 import br.com.davi.socialnetwork.exceptions.InvalidPasswordException;

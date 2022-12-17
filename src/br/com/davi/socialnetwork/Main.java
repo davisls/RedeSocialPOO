@@ -1,6 +1,6 @@
 package br.com.davi.socialnetwork;
 
-import br.com.davi.socialnetwork.redesocial.SocialNetwork;
+import br.com.davi.socialnetwork.socialnetwork.SocialNetwork;
 
 public class Main {
 

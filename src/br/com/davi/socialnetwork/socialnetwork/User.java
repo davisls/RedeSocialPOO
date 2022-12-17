@@ -1,4 +1,4 @@
-package br.com.davi.socialnetwork.redesocial;
+package br.com.davi.socialnetwork.socialnetwork;
 
 import br.com.davi.socialnetwork.exceptions.InvalidFormatPasswordException;
 
@@ -20,7 +20,6 @@ public class User {
 		this.name = name;
 		this.login = login;
 		this.password = password;
-		// this.socialNetwork = socialNetwork;
 	}
 
 	public String getName() {
