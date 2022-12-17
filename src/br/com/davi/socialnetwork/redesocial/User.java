@@ -1,6 +1,6 @@
-package redesocial;
+package br.com.davi.socialnetwork.redesocial;
 
-import exceptions.InvalidFormatPasswordException;
+import br.com.davi.socialnetwork.exceptions.InvalidFormatPasswordException;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,14 +12,16 @@ public class User {
 	private final String login;
 	private String password;
 	private ArrayList<Post> posts = new ArrayList<>();
+	private SocialNetwork socialNetwork;
 
 	private Scanner sc = new Scanner(System.in);
 
-	public User(String name, String login, String password) throws InvalidFormatPasswordException {
+	public User(String name, String login, String password, SocialNetwork socialNetwork) throws InvalidFormatPasswordException {
 		this.passwordValidator(password);
 		this.name = name;
 		this.login = login;
 		this.password = password;
+		this.socialNetwork = socialNetwork;
 	}
 
 	public String getName() {
@@ -56,7 +58,7 @@ public class User {
 		} else if (option.equals("T")) {
 			timeline();
 		} else if (option.equals("S")) {
-			SocialNetwork.menu();
+			socialNetwork.menu();
 		}
 	}
 

@@ -1,8 +1,8 @@
-package redesocial;
+package br.com.davi.socialnetwork.redesocial;
 
-import exceptions.InvalidFormatPasswordException;
-import exceptions.InvalidPasswordException;
-import exceptions.UserNotFoundException;
+import br.com.davi.socialnetwork.exceptions.InvalidFormatPasswordException;
+import br.com.davi.socialnetwork.exceptions.InvalidPasswordException;
+import br.com.davi.socialnetwork.exceptions.UserNotFoundException;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,12 +11,8 @@ public class SocialNetwork {
 	private static ArrayList<User> users = new ArrayList<>();
 
 	private static Scanner sc = new Scanner(System.in);
-	
-	public static void main(String[] args) {
-		SocialNetwork.menu();
-	}
 
-	public static void menu() {
+	public void menu() {
 		System.out.println("\n========================================");
 		System.out.println("|             Menu Inicial:            |");
 		System.out.println("|                                      |");
@@ -49,7 +45,7 @@ public class SocialNetwork {
 		System.exit(0);
 	}
 
-	public static void register() {
+	public void register() {
 		sc.nextLine();
 
 		System.out.print("\nDigite o seu nome: ");
@@ -88,7 +84,7 @@ public class SocialNetwork {
 		}
 		
 		try {
-			User user = new User(name, login, password);
+			User user = new User(name, login, password, this);
 			users.add(user);
 		} catch (InvalidFormatPasswordException e) {
 			System.out.println(e.getMessage());
@@ -98,7 +94,7 @@ public class SocialNetwork {
 		menu();
 	}
 	
-	public static void login() throws UserNotFoundException, InvalidPasswordException {
+	public void login() throws UserNotFoundException, InvalidPasswordException {
 		sc.nextLine();
 
 		System.out.print("\nDigite o seu login: ");
