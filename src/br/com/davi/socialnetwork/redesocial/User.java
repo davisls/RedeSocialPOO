@@ -32,10 +32,6 @@ public class User {
 		return login;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
 	public void setPassword(String password) throws InvalidFormatPasswordException {
 		this.passwordValidator(password);
 		this.password = password;
@@ -70,6 +66,10 @@ public class User {
         if(!matcher.matches()) {
         	throw new InvalidFormatPasswordException("\nSua senha deve conter entre 8 e 20 caracteres, sendo um númerico, um maiúsculo e um minúsculo!");
         }
+	}
+
+	public boolean checkIfPasswordIsCorrect(String password) {
+		return password.equals(this.password);
 	}
 	
 	public void post() {
